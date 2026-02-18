@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './PaymentForm.css';
 
-export const API_BASE_URL = import.meta.env.PAYMENT_API_URL;
+export const API_BASE_URL = import.meta.env.VITE_PAYMENT_API_URL;
 
 export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdate }) {
   const [formData, setFormData] = useState({
