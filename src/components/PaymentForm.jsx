@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './PaymentForm.css';
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+export const API_BASE_URL = import.meta.env.PAYMENT_API_URL;
 
 export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdate }) {
   const [formData, setFormData] = useState({
@@ -50,7 +50,7 @@ export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdat
 
   const handleListPayments = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/payment/');
+      const response = await axios.get(`${API_BASE_URL}/payment/`);
       setPayments(response.data.data);
       onDataUpdate(response.data.data);
       onTypeUpdate('list');
@@ -68,7 +68,7 @@ export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdat
       return;
     }
     try {
-      const response = await axios.get(`http://localhost:3000/payment/${paymentId}`);
+      const response = await axios.get(`${API_BASE_URL}/payment/${paymentId}`);
       setSelectedPayment(response.data.data);
       onDataUpdate(response.data.data);
       onTypeUpdate('single');
