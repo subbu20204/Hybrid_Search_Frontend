@@ -12,8 +12,6 @@ export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdat
     cvv: '123'
   });
   const [paymentId, setPaymentId] = useState('');
-  const [payments, setPayments] = useState([]);
-  const [selectedPayment, setSelectedPayment] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,11 +49,9 @@ export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdat
   const handleListPayments = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/payment/`);
-      setPayments(response.data.data);
       onDataUpdate(response.data.data);
       onTypeUpdate('list');
       onMessageUpdate('✅ Payments fetched successfully!');
-      setSelectedPayment(null);
     } catch (error) {
       console.error('Error fetching payments:', error);
       onMessageUpdate(`❌ Error: ${error.response?.data?.error || 'Failed to fetch payments'}`);
@@ -69,14 +65,12 @@ export default function PaymentForm({ onDataUpdate, onTypeUpdate, onMessageUpdat
     }
     try {
       const response = await axios.get(`${API_BASE_URL}/payment/${paymentId}`);
-      setSelectedPayment(response.data.data);
       onDataUpdate(response.data.data);
       onTypeUpdate('single');
       onMessageUpdate('✅ Payment fetched successfully!');
     } catch (error) {
       console.error('Error fetching payment:', error);
       onMessageUpdate(`❌ Error: ${error.response?.data?.error || 'Payment not found'}`);
-      setSelectedPayment(null);
     }
   };
 
