@@ -11,7 +11,7 @@
 }
 
 .left-container {
-  width: 50%;
+  width: 35%;
   height: 100%;
   background: #0a0a0a;
   padding: 2rem;
@@ -23,7 +23,7 @@
 }
 
 .right-container {
-  width: 50%;
+  width: 65%;
   height: 100%;
   background: #0a0a0a;
   padding: 2rem;
@@ -38,7 +38,9 @@
 .right-container h1 {
   color: #00d4ff;
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .left-container p,
@@ -97,10 +99,11 @@
 }
 
 .message-card {
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
+  padding: 0.875rem 1rem;
+  border-radius: 10px;
+  margin-top: 1.25rem;
   animation: slideIn 0.3s ease-out;
+  font-size: 0.85rem;
 }
 
 @keyframes slideIn {
@@ -130,5 +133,214 @@
 
 .message-card p {
   margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.json-output {
+  background: #0d0d0d;
+  border: 2px solid #00d4ff;
+  border-radius: 12px;
+  padding: 2rem;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #a8e6cf;
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 1.8;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 212, 255, 0.1);
+}
+
+.json-output::before {
+  content: '{ JSON Response }';
+  display: block;
+  color: #00d4ff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.response-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.summary-item {
+  background: #0d0d0d;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.3s;
+}
+
+.summary-item:hover {
+  border-color: #00d4ff;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.summary-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00d4ff;
+}
+
+.summary-value.decision-approved {
+  color: #00ff88;
+}
+
+.summary-value.decision-denied {
+  color: #ff4444;
+}
+
+.summary-value.decision-partial {
+  color: #ffaa00;
+}
+
+.summary-value.confidence {
+  color: #00d4ff;
+}
+
+.explanation-box {
+  background: #0d0d0d;
+  border: 2px solid #333;
+  border-left: 4px solid #00d4ff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.explanation-box h3 {
+  color: #00d4ff;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.explanation-box p {
+  color: #b0b0b0;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.json-section {
+  margin-top: 2rem;
+}
+
+.json-section h3 {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #555;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.placeholder h2 {
+  color: #666;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.placeholder p {
+  color: #555;
   font-size: 1rem;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #1a1a1a;
+  border-top: 4px solid #00d4ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-state h2 {
+  color: #00d4ff;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.loading-state p {
+  color: #888;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Custom Scrollbar */
+.right-container::-webkit-scrollbar,
+.left-container::-webkit-scrollbar,
+.json-output::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.right-container::-webkit-scrollbar-track,
+.left-container::-webkit-scrollbar-track,
+.json-output::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 4px;
+}
+
+.right-container::-webkit-scrollbar-thumb,
+.left-container::-webkit-scrollbar-thumb,
+.json-output::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.right-container::-webkit-scrollbar-thumb:hover,
+.left-container::-webkit-scrollbar-thumb:hover,
+.json-output::-webkit-scrollbar-thumb:hover {
+  background: #00d4ff;
 }
